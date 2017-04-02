@@ -1,0 +1,2 @@
+sc create KidsGuardService binpath= C:\projects\KidsGuard\KidsGuardService\bin\Debug\KidsGuardService.exe type= share start= auto
+sc delete KidsGuardService
