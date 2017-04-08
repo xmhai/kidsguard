@@ -8,7 +8,7 @@
     <ProjectGuid>{BF4F5D81-A014-4D4E-86FD-CCFE52466596}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KidsGuard</RootNamespace>
+    <RootNamespace>KidsComputerGuard</RootNamespace>
     <AssemblyName>KidsGuard</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
       <HintPath>sqlite\setup\sqlite-netFx40-static-binary-x64-2010-1.0.99.0\System.Data.SQLite.dll</HintPath>
@@ -65,6 +66,7 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppBlocker.cs" />
     <Compile Include="BrowserMonitor.cs" />
     <Compile Include="BreakReminder.cs" />
     <Compile Include="AppConfig.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="FormStat.Designer.cs">
       <DependentUpon>FormStat.cs</DependentUpon>
     </Compile>
+    <Compile Include="KidsGuardConfig.cs" />
     <Compile Include="password.cs">
       <SubType>Form</SubType>
     </Compile>

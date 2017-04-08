@@ -17,6 +17,7 @@ namespace KidsComputerGuard
 
         private BreakReminder breakReminder = new BreakReminder();
         private UsageStat usageStat = new UsageStat();
+        private AppBlocker _appBlocker;
         private Boolean paused = false;
 
         public FormMain()
@@ -30,6 +31,8 @@ namespace KidsComputerGuard
 
             DbHelper.loadAppConfig();
             DbHelper.restoreStat(usageStat);
+
+            _appBlocker = new AppBlocker(usageStat);
 
             // update ui
             updateForm();
@@ -93,6 +96,8 @@ namespace KidsComputerGuard
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            int timerInterval = timer1.Interval / 1000;
+
             // if station is locked, don't do anything
             if (stationLocked)
             {
@@ -140,11 +145,12 @@ namespace KidsComputerGuard
 
                 // update process using time
                 String title = Win32.GetActiveWindowTitle();
+                string process = Win32.GetActiveProcessName();
+
                 updateStatInterval--;
                 if (updateStatInterval == 0)
                 {
                     updateStatInterval = AppConfig.updateStatInterval;
-                    string process = Win32.GetActiveProcessName();
                     if (!AppConfig.isProcessExcluded(process))
                     {
                         usageStat.addProgramTime(process, title, 10);
@@ -166,6 +172,8 @@ namespace KidsComputerGuard
                 {
                     Win32.KillActiveProcess();
                 }
+
+                _appBlocker.process(process, title, timerInterval);
 
                 // break reminder
                 if (!paused)
