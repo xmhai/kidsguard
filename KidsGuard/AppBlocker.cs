@@ -11,22 +11,24 @@ namespace KidsComputerGuard
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(AppBlocker));
 
-        private Dictionary<string, int> appTimeDict = new Dictionary<string, int>();
+        private int _totalAllowedTime = 3600;
+        private Dictionary<string, int> _appTimeDict = new Dictionary<string, int>();
         private UsageStat _usageStat;
 
         public AppBlocker(UsageStat usageStat)
         {
             _usageStat = usageStat;
+            _totalAllowedTime = KidsGuardConfig.GetConfig().TotalAllowedTime;
             initAppTimeDict();
         }
 
         private void initAppTimeDict()
         {
-            foreach(KidsGuardConfig.BlockedApp blockedApp in KidsGuardConfig.GetConfig().BlockedApps)
+            foreach(KidsGuardConfig.MonitoredApp blockedApp in KidsGuardConfig.GetConfig().MonitoredApps)
             {
                 int allowedTime = blockedApp.AllowedTime;
                 allowedTime = allowedTime - getAppTimeUsed(blockedApp.Title); // deduct today usage time
-                appTimeDict.Add(blockedApp.Title, allowedTime);
+                _appTimeDict.Add(blockedApp.Title, allowedTime);
             }
         }
 
@@ -53,7 +55,7 @@ namespace KidsComputerGuard
             }
 
             string key = String.Empty;
-            foreach (KeyValuePair<string, int> appTime in appTimeDict)
+            foreach (KeyValuePair<string, int> appTime in _appTimeDict)
             {
                 if (title.IndexOf(appTime.Key, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
@@ -65,8 +67,9 @@ namespace KidsComputerGuard
 
             if (!key.Equals(String.Empty))
             {
-                appTimeDict[key] -= activeTime;
-                if (appTimeDict[key] <= 0)
+                _totalAllowedTime -= activeTime;
+                _appTimeDict[key] -= activeTime;
+                if (_appTimeDict[key] <= 0 || _totalAllowedTime <=0)
                 {
                     logger.Info("Application '"+ title + "' is forced to close due to exceed allowedTime!");
 

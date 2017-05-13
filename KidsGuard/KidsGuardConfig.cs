@@ -72,25 +72,39 @@ namespace KidsComputerGuard
             }
         }
 
-        [ConfigurationProperty("BlockedApps")]
-        [ConfigurationCollection(typeof(BlockedApp), AddItemName = "BlockedApp")]
-        public BlockedAppCollection BlockedApps
+        // Monitored Apps total allowed time to 60 minutes (3600 seconds)
+        [ConfigurationProperty("totalAllowedTime", DefaultValue = "3600", IsRequired = false)]
+        public int TotalAllowedTime
         {
             get
             {
-                return (BlockedAppCollection)this["BlockedApps"];
+                return (int)this["totalAllowedTime"];
+            }
+            set
+            {
+                this["totalAllowedTime"] = value;
+            }
+        }
+
+        [ConfigurationProperty("MonitoredApps")]
+        [ConfigurationCollection(typeof(MonitoredApp), AddItemName = "MonitoredApp")]
+        public MonitoredAppCollection MonitoredApps
+        {
+            get
+            {
+                return (MonitoredAppCollection)this["MonitoredApps"];
             }
         }
 
         // nested classes
 
-        public class BlockedAppCollection : ConfigurationElementCollection
+        public class MonitoredAppCollection : ConfigurationElementCollection
         {
-            public BlockedApp this[int index]
+            public MonitoredApp this[int index]
             {
                 get
                 {
-                    return base.BaseGet(index) as BlockedApp;
+                    return base.BaseGet(index) as MonitoredApp;
                 }
                 set
                 {
@@ -104,16 +118,16 @@ namespace KidsComputerGuard
 
             protected override ConfigurationElement CreateNewElement()
             {
-                return new BlockedApp();
+                return new MonitoredApp();
             }
 
             protected override object GetElementKey(ConfigurationElement element)
             {
-                return ((BlockedApp)element).Title;
+                return ((MonitoredApp)element).Title;
             }
         }
 
-        public class BlockedApp : ConfigurationElement
+        public class MonitoredApp : ConfigurationElement
         {
 
             [ConfigurationProperty("title", IsRequired = true)]
