@@ -88,5 +88,32 @@ namespace KidsComputerGuard
             }
             return dict[key];
         }
+
+        public int getAppTimeUsed(string titleKeyWord)
+        {
+            int timeUsed = 0;
+
+            foreach (KeyValuePair<string, int> programTime in this.programTime)
+            {
+                if (programTime.Key.IndexOf(titleKeyWord, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    timeUsed += programTime.Value;
+                }
+            }
+
+            return timeUsed;
+        }
+
+        public int getTotalComputerTime()
+        {
+            int timeUsed = 0;
+
+            foreach (KeyValuePair<string, int> programTime in this.programTime)
+            {
+                timeUsed += programTime.Value;
+            }
+
+            return timeUsed;
+        }
     }
 }

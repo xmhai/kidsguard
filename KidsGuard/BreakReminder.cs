@@ -16,7 +16,6 @@ namespace KidsComputerGuard
 
         public void checkBreakTime(UsageStat usageStat)
         {
-            // if working for 60 minutes, take a break for 10 minutes
             if (usageStat.State == "RUN")
             {
                 //if (AppConfig.userToMonitor.IndexOf(Environment.UserName) == -1)
@@ -48,7 +47,18 @@ namespace KidsComputerGuard
 
                 if (usageStat.SessionTime == 0)
                 {
-                    logger.Info("Lock Station");
+                    logger.Info("Lock Station due to session timeout");
+
+                    usageStat.UpdateToLock();
+
+                    // lock computer
+                    Win32.LockWorkStation();
+                }
+
+                // check total computer time
+                if (usageStat.getTotalComputerTime() >= KidsGuardConfig.GetConfig().TotalComputerTime)
+                {
+                    logger.Info("Lock Station due to total computer time is used up");
 
                     usageStat.UpdateToLock();
 
