@@ -72,6 +72,20 @@ namespace KidsComputerGuard
             }
         }
 
+        // Total computer time to 180 minutes (10800 seconds)
+        [ConfigurationProperty("totalComputerTime", DefaultValue = "10800", IsRequired = false)]
+        public int TotalComputerTime
+        {
+            get
+            {
+                return (int)this["totalComputerTime"];
+            }
+            set
+            {
+                this["totalComputerTime"] = value;
+            }
+        }
+
         // Monitored Apps total allowed time to 60 minutes (3600 seconds)
         [ConfigurationProperty("totalAllowedTime", DefaultValue = "3600", IsRequired = false)]
         public int TotalAllowedTime
