@@ -30,12 +30,15 @@ namespace KidsComputerGuard
                 int allowedTime = blockedApp.AllowedTime;
                 string blockedAppTitle = blockedApp.Title.ToLower();
 
-                // for weekday, only play for 5 minutes
-                //DateTime dt = new DateTime();
-                //if (dt.DayOfWeek != DayOfWeek.Saturday && dt.DayOfWeek != DayOfWeek.Sunday)
-                //{
-                //    allowedTime = 300; // 5 minutes
-                //}
+                // for weekday
+                DateTime dt = DateTime.Now;
+                if (dt.DayOfWeek != DayOfWeek.Saturday && dt.DayOfWeek != DayOfWeek.Sunday)
+                {
+                    if (allowedTime > 600)
+                    {
+                        allowedTime = 600; // 10 minutes
+                    }
+                }
 
                 // deduct today used time
                 allowedTime = allowedTime - _usageStat.getAppTimeUsed(blockedAppTitle);
