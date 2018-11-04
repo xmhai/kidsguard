@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -94,8 +95,41 @@ namespace KidsComputerGuard
         private int breakTime = AppConfig.breakTime * 60; // remaining break time in seconds
         private HashSet<String> programPersistSet = new HashSet<String>();
 
+        bool isDaemonRunning()
+        {
+            Process[] processes = Process.GetProcessesByName("KidsGuardDaemon");
+            return (processes != null && processes.Length > 0);
+        }
+
+        void runDaemon()
+        {
+            logger.Info("Start Daemon");
+            Process myProcess = new Process();
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = false;
+                // You can start any process, HelloWorld is a do-nothing example.
+                myProcess.StartInfo.FileName = "KidsGuardDaemon.exe";
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.Start();
+                // This code assumes the process you are starting will terminate itself. 
+                // Given that is is started without a window so you cannot terminate it 
+                // on the desktop, it must terminate itself or you can do it programmatically
+                // from this application using the Kill method.
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (!isDaemonRunning())
+            {
+                runDaemon();
+            }
+
             int timerInterval = timer1.Interval / 1000;
 
             // if station is locked, don't do anything
@@ -201,6 +235,9 @@ namespace KidsComputerGuard
 
         private void FormMain_Resize(object sender, EventArgs e)
         {
+            /*
+             * don't need to minimize to notification area, so we would know whether it is running
+             * 
             notifyIcon1.BalloonTipTitle = "Kids Guard";
             notifyIcon1.BalloonTipText = "Kids Guard";
 
@@ -214,12 +251,15 @@ namespace KidsComputerGuard
             {
                 notifyIcon1.Visible = false;
             }
+            */
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            /*
             this.Show();
             this.WindowState = FormWindowState.Normal;
+            */
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
