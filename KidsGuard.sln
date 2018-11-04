@@ -1,38 +1,71 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidsGuard", "KidsGuard\KidsGuard.csproj", "{BF4F5D81-A014-4D4E-86FD-CCFE52466596}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidsGuardService", "KidsGuardService\KidsGuardService.csproj", "{C078104E-FA79-4AC2-AF3A-547816C88383}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidsGuardDaemon", "KidsGuardDaemon\KidsGuardDaemon.csproj", "{BAE69864-A8F1-48AE-9133-355A03690A66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Debug|ARM.ActiveCfg = Debug|x86
 		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Debug|x64.ActiveCfg = Debug|x64
 		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Debug|x64.Build.0 = Debug|x64
 		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Debug|x86.ActiveCfg = Debug|x86
 		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Debug|x86.Build.0 = Debug|x86
+		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Release|Any CPU.ActiveCfg = Release|x86
+		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Release|ARM.ActiveCfg = Release|x86
 		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Release|x64.ActiveCfg = Release|x64
 		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Release|x64.Build.0 = Release|x64
 		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Release|x86.ActiveCfg = Release|x86
 		{BF4F5D81-A014-4D4E-86FD-CCFE52466596}.Release|x86.Build.0 = Release|x86
+		{C078104E-FA79-4AC2-AF3A-547816C88383}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C078104E-FA79-4AC2-AF3A-547816C88383}.Debug|ARM.ActiveCfg = Debug|x86
 		{C078104E-FA79-4AC2-AF3A-547816C88383}.Debug|x64.ActiveCfg = Debug|x64
 		{C078104E-FA79-4AC2-AF3A-547816C88383}.Debug|x64.Build.0 = Debug|x64
 		{C078104E-FA79-4AC2-AF3A-547816C88383}.Debug|x86.ActiveCfg = Debug|x86
 		{C078104E-FA79-4AC2-AF3A-547816C88383}.Debug|x86.Build.0 = Debug|x86
+		{C078104E-FA79-4AC2-AF3A-547816C88383}.Release|Any CPU.ActiveCfg = Release|x86
+		{C078104E-FA79-4AC2-AF3A-547816C88383}.Release|ARM.ActiveCfg = Release|x86
 		{C078104E-FA79-4AC2-AF3A-547816C88383}.Release|x64.ActiveCfg = Release|x64
 		{C078104E-FA79-4AC2-AF3A-547816C88383}.Release|x64.Build.0 = Release|x64
 		{C078104E-FA79-4AC2-AF3A-547816C88383}.Release|x86.ActiveCfg = Release|x86
 		{C078104E-FA79-4AC2-AF3A-547816C88383}.Release|x86.Build.0 = Release|x86
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Debug|ARM.Build.0 = Debug|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Debug|x64.Build.0 = Debug|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Debug|x86.Build.0 = Debug|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Release|ARM.ActiveCfg = Release|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Release|ARM.Build.0 = Release|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Release|x64.ActiveCfg = Release|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Release|x64.Build.0 = Release|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Release|x86.ActiveCfg = Release|Any CPU
+		{BAE69864-A8F1-48AE-9133-355A03690A66}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08EE2A84-2C04-4380-994C-0112A70496F3}
 	EndGlobalSection
 EndGlobal
