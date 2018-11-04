@@ -66,7 +66,7 @@
             // lblSessionRunningTime
             // 
             this.lblSessionRunningTime.AutoSize = true;
-            this.lblSessionRunningTime.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSessionRunningTime.Font = new System.Drawing.Font("Microsoft YaHei", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSessionRunningTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblSessionRunningTime.Location = new System.Drawing.Point(17, 39);
             this.lblSessionRunningTime.Name = "lblSessionRunningTime";
